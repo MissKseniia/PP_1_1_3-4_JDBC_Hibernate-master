@@ -1,5 +1,6 @@
 package jm.task.core.jdbc;
 
+import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
 public class Main {
@@ -16,22 +17,22 @@ public class Main {
         // После каждого добавления должен быть вывод в консоль
         // ( User с именем – name добавлен в базу данных )
 
+        User user1 = new User("Kseniya", "Vlasova", (byte) 15);
+        User user2 = new User("Lim","Black", (byte) 22);
+        User user3 = new User("Alex","Potter", (byte) 57);
+        User user4 = new User("Nataly","Harrison", (byte) 36);
 
-        String name1 = "Kseniya", name2 = "Lim", name3 = "Alex", name4 = "Nataly";
-        String lastName1 = "Vlasova", lastName2 = "Black", lastName3 = "Potter", lastName4 = "Harrison";
-        Byte age1 = 15, age2 = 22, age3 = 57, age4 = 36;
+        userService.saveUser(user1.getName(), user1.getLastName(), user1.getAge()); //1
+        userService.printMessage(user1.getName());
 
-        userService.saveUser(name1, lastName1, age1); //1
-        userService.printMessage(name1);
+        userService.saveUser(user2.getName(), user2.getLastName(), user2.getAge()); //2
+        userService.printMessage(user2.getName());
 
-        userService.saveUser(name2, lastName2, age2); //2
-        userService.printMessage(name2);
-
-        userService.saveUser(name3, lastName3, age3); //3
-        userService.printMessage(name3);
+        userService.saveUser(user3.getName(), user3.getLastName(), user3.getAge()); //3
+        userService.printMessage(user3.getName());
         
-        userService.saveUser(name4, lastName4, age4); //4
-        userService.printMessage(name4);
+        userService.saveUser(user4.getName(), user4.getLastName(), user4.getAge()); //4
+        userService.printMessage(user4.getName());
 
         // Получение всех User из базы и вывод в консоль
         // ( должен быть переопределен toString в классе User)
