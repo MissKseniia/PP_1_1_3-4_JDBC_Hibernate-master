@@ -1,20 +1,26 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
 @Table
 public class User {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     @Column
     private String name;
 
+
     @Column
     private String lastName;
+
 
     @Column
     private Byte age;
@@ -67,7 +73,8 @@ public class User {
         if (!(o instanceof User)) return false;
         User user = (User) o;
         return id.equals(user.id) && name.equals(user.name)
-                && lastName.equals(user.lastName) && age.equals(user.age);
+                && lastName.equals(user.lastName)
+                && age.equals(user.age);
     }
 
     @Override
@@ -77,10 +84,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
+        return "User{" + "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                '}';
+                ", age=" + age + '}';
     }
 }

@@ -2,6 +2,7 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,9 +19,13 @@ public class Main {
         // ( User с именем – name добавлен в базу данных )
 
         User user1 = new User("Kseniya", "Vlasova", (byte) 15);
-        User user2 = new User("Lim","Black", (byte) 22);
-        User user3 = new User("Alex","Potter", (byte) 57);
-        User user4 = new User("Nataly","Harrison", (byte) 36);
+
+        User user2 = new User("Lim", "Black", (byte) 22);
+
+        User user3 = new User("Alex", "Potter", (byte) 57);
+
+        User user4 = new User("Nataly", "Harrison", (byte) 36);
+
 
         userService.saveUser(user1.getName(), user1.getLastName(), user1.getAge()); //1
         userService.printMessage(user1.getName());
@@ -30,7 +35,7 @@ public class Main {
 
         userService.saveUser(user3.getName(), user3.getLastName(), user3.getAge()); //3
         userService.printMessage(user3.getName());
-        
+
         userService.saveUser(user4.getName(), user4.getLastName(), user4.getAge()); //4
         userService.printMessage(user4.getName());
 
@@ -43,6 +48,9 @@ public class Main {
 
         // Удаление таблицы
         userService.dropUsersTable();
+
+        //Закрытие соединения/сессии
+        userService.close();
 
     }
 
