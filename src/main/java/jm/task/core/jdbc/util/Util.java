@@ -64,7 +64,7 @@ public class Util {
 
         } catch (Exception e) {
             System.out.println("Some problems with creating the session");
-            e.printStackTrace();
+            System.err.println(e);
         }
         return sessionFactory;
     }
